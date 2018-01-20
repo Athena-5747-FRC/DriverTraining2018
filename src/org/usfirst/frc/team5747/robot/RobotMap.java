@@ -7,7 +7,7 @@ package org.usfirst.frc.team5747.robot;
  * floating around.
  */
 public class RobotMap {
-	public interface PWM{
+	public interface CAN{
 	public static final int DRIVE_LEFT_MOTOR = 1;
 	public static final int DRIVE_RIGHT_MOTOR = 2;
 }		

@@ -4,8 +4,9 @@ package org.usfirst.frc.team5747.robot;
 import org.usfirst.frc.team5747.robot.commands.commandgroups.Line;
 import org.usfirst.frc.team5747.robot.subsystems.Drivetrain;
 
+import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
+
 import edu.wpi.first.wpilibj.IterativeRobot;
-import edu.wpi.first.wpilibj.PWMTalonSRX;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
@@ -35,7 +36,7 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void robotInit() {
 		drivetrain = new Drivetrain(
-				new PWMTalonSRX(RobotMap.PWM.DRIVE_LEFT_MOTOR), new PWMTalonSRX(RobotMap.PWM.DRIVE_RIGHT_MOTOR));
+				new WPI_TalonSRX(RobotMap.CAN.DRIVE_LEFT_MOTOR), new WPI_TalonSRX(RobotMap.CAN.DRIVE_RIGHT_MOTOR));
 				
 		chooser.addDefault("Line", new Line());
 		SmartDashboard.putData("Auto mode",chooser);
