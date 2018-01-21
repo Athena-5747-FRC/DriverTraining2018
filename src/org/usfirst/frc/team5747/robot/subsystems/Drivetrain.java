@@ -12,17 +12,23 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  */
 public class Drivetrain extends Subsystem {
 	public static final double DRIVING_SPEED = 0.5;
-	private WPI_TalonSRX leftDrive;
-	private WPI_TalonSRX rightDrive;
+	private WPI_TalonSRX leftDrive1;
+	private WPI_TalonSRX leftDrive2;
+	private WPI_TalonSRX rightDrive1;
+	private WPI_TalonSRX rightDrive2;
 
-	public Drivetrain(WPI_TalonSRX leftDrive, WPI_TalonSRX rightDrive) {
-		this.leftDrive = leftDrive;
-		this.rightDrive = rightDrive;
+	public Drivetrain(WPI_TalonSRX leftDrive1, WPI_TalonSRX leftDrive2,WPI_TalonSRX rightDrive1, WPI_TalonSRX rightDrive2) {
+		this.leftDrive1 = leftDrive1;
+		this.leftDrive2 = leftDrive2;
+		this.rightDrive1 = rightDrive1;
+		this.rightDrive2 = rightDrive2;
 	}
 
 	public void move(double leftSpeed, double rightSpeed) {
-		leftDrive.set(-leftSpeed);
-		rightDrive.set(rightSpeed);
+		leftDrive1.set(-leftSpeed);
+		leftDrive2.set(-leftSpeed);
+		rightDrive1.set(rightSpeed);
+		rightDrive2.set(rightSpeed);
 	}
 
 	

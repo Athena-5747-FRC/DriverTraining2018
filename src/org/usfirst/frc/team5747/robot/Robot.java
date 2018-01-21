@@ -36,7 +36,7 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void robotInit() {
 		drivetrain = new Drivetrain(
-				new WPI_TalonSRX(RobotMap.CAN.DRIVE_LEFT_MOTOR), new WPI_TalonSRX(RobotMap.CAN.DRIVE_RIGHT_MOTOR));
+				new WPI_TalonSRX(RobotMap.CAN.DRIVE_LEFT_1), new WPI_TalonSRX(RobotMap.CAN.DRIVE_LEFT_2),new WPI_TalonSRX(RobotMap.CAN.DRIVE_RIGHT_1), new WPI_TalonSRX(RobotMap.CAN.DRIVE_RIGHT_2));
 				
 		chooser.addDefault("Line", new Line());
 		SmartDashboard.putData("Auto mode",chooser);
