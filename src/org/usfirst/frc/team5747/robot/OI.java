@@ -16,7 +16,7 @@ public class OI {
 
 
 	public double getForwardDriver() {
-		return  Math.pow (driver.getLeftY(), 3);
+		return  Math.pow(driver.getLeftY(), 3);
 	}
 
 	public double getRotationDriver() {

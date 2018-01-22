@@ -1,41 +1,51 @@
 package org.usfirst.frc.team5747.robot.subsystems;
 
 import org.usfirst.frc.team5747.robot.Robot;
-import org.usfirst.frc.team5747.robot.commands.DriveArcade;
 
-import com.ctre.phoenix.motorcontrol.ControlMode;
-import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
+import com.spikes2212.genericsubsystems.drivetrains.TankDrivetrain;
+import com.spikes2212.genericsubsystems.drivetrains.commands.DriveArcade;
 
-import edu.wpi.first.wpilibj.command.Subsystem;
+import edu.wpi.first.wpilibj.PIDSource;
+import edu.wpi.first.wpilibj.SpeedController;
 
 /**
  *
  */
-public class Drivetrain extends Subsystem {
-	public static final double DRIVING_SPEED = 0.5;
-	private WPI_TalonSRX leftDrive1;
-	private WPI_TalonSRX leftDrive2;
-	private WPI_TalonSRX rightDrive1;
-	private WPI_TalonSRX rightDrive2;
-
-	public Drivetrain(WPI_TalonSRX leftDrive1, WPI_TalonSRX leftDrive2,WPI_TalonSRX rightDrive1, WPI_TalonSRX rightDrive2) {
-		this.leftDrive1 = leftDrive1;
-		this.leftDrive2 = leftDrive2;
-		this.rightDrive1 = rightDrive1;
-		this.rightDrive2 = rightDrive2;
-	}
-
-	public void move(double leftSpeed, double rightSpeed) {
-		leftDrive1.set(-leftSpeed);
-		leftDrive2.set(ControlMode.Follower,leftDrive1.getDeviceID());
-		rightDrive1.set(rightSpeed);
-		rightDrive2.set(ControlMode.Follower,rightDrive1.getDeviceID());
-	}
-
+public class Drivetrain extends TankDrivetrain {
+	private SpeedController right,left;
 	
+	public Drivetrain(SpeedController left, SpeedController right) {
+		this.right = right;
+		this.left = left;
+		left.setInverted(true);
+	}
 
 	public void initDefaultCommand() {
 		setDefaultCommand(new DriveArcade(Robot.drivetrain, Robot.oi::getForwardDriver, Robot.oi::getRotationDriver));
+	}
+
+	@Override
+	public PIDSource getLeftPIDSource() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public PIDSource getRightPIDSource() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void setLeft(double speed) {
+		left.set(speed);
+		
+	}
+
+	@Override
+	public void setRight(double speed) {
+		right.set(speed);
+		
 	}
 
 }
