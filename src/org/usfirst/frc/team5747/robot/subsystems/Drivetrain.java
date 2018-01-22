@@ -3,6 +3,7 @@ package org.usfirst.frc.team5747.robot.subsystems;
 import org.usfirst.frc.team5747.robot.Robot;
 import org.usfirst.frc.team5747.robot.commands.DriveArcade;
 
+import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
@@ -26,9 +27,9 @@ public class Drivetrain extends Subsystem {
 
 	public void move(double leftSpeed, double rightSpeed) {
 		leftDrive1.set(-leftSpeed);
-		leftDrive2.set(-leftSpeed);
+		leftDrive2.set(ControlMode.Follower,leftDrive1.getDeviceID());
 		rightDrive1.set(rightSpeed);
-		rightDrive2.set(rightSpeed);
+		rightDrive2.set(ControlMode.Follower,rightDrive1.getDeviceID());
 	}
 
 	
