@@ -38,6 +38,7 @@ public class Robot extends IterativeRobot {
 						new WPI_TalonSRX(RobotMap.CAN.DRIVE_LEFT_2)),
 				new DoubleSpeedcontroller(new WPI_TalonSRX(RobotMap.CAN.DRIVE_RIGHT_1),
 						(new WPI_TalonSRX(RobotMap.CAN.DRIVE_RIGHT_2))));
+		oi = new OI();
 
 		// chooser.addDefault("Line", new Line());
 		SmartDashboard.putData("Auto mode", chooser);
